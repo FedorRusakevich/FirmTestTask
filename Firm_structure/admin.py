@@ -3,11 +3,6 @@ from .models import *
 # Register your models here.
 from django_admin_relation_links import AdminChangeLinksMixin
 
-@admin.register(Head)
-class HeadAdmin(AdminChangeLinksMixin, admin.ModelAdmin):
-
-    list_display = ('surname', 'name')
-    changelist_links = ['emp_head_name']
 
 
 @admin.register(Employees)
@@ -26,6 +21,7 @@ class EmployeesAdmin(AdminChangeLinksMixin, admin.ModelAdmin):
             emp_total_salary.save()
             message_text = f'Начисленная ЗП была удалена для выбранного сотрудника {emp_total_salary}'
             self.message_user(request, f"{message_text}")
+
 
     delete_total_salary.short_description = "Удалить начисленную ЗП"
 
